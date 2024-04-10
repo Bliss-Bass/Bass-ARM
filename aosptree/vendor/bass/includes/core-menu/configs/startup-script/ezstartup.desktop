@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Exec="/usr/share/easy-menu-system/core-menu.sh -c /usr/share/easy-menu-system/configs/startup-script/startup-options.json"
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=Easy Startup Script

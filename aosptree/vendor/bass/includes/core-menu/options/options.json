@@ -1,0 +1,48 @@
+{
+    "project": "easy menu system",
+    "version": 0.1,
+    "updated": "2023-01-26T00:00:00.000Z",
+    "debug": true,
+    "options": {
+      "menuEntry": [
+        {
+          "name": "this Name",
+          "command": "bash this_script.sh",
+          "dependencies": [
+            {
+              "dep": "ls /usr/local/share/applications"
+            }
+          ]
+        },
+        {
+          "name": "that Name",
+          "command": "bash that_script.sh",
+          "dependencies": [
+            {
+                "dep": "ls /usr/local/share/applications"
+            }
+          ]
+        },
+        {
+          "name": "other Name",
+          "command": "",
+          "dependencies": [
+            {
+                "dep": "ls /usr/lib/share/applications"
+            }
+          ],
+          "subMenuEntry": [
+            {
+              "name": "this SubName",
+              "command": "bash this_other_subscript.sh",
+              "dependencies": [
+                {
+                    "dep": "ls /usr/lib/share/applications"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
