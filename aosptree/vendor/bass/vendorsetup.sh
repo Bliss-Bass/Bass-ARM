@@ -35,14 +35,19 @@ SCRIPT_PATH=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 vendor_name=$(basename "$SCRIPT_PATH")
 
 # replace "vendor/branding" with "vendor/$vendor_name" in vendor/$vendor_name/branding/menus/branding-menu/branding-menu.json
-sed -i "s/branding/$vendor_name/g" vendor/$vendor_name/branding/menus/branding-menu/branding-menu.json
-if sed -i "s/vendor\/branding/vendor\/$vendor_name/g" vendor/$vendor_name/bootanimation/Android.mk; then
-    echo -e "${green}Setting vendor name\n${reset}"
-else
-    echo -e "${yellow}Vendor Customization functions not found. Check license and verify all instructions have been followed, continuing without menu...\n${reset}"
+if sed -i "s/\(\<vendor\/branding\>\)/\1/$vendor_name/g" vendor/$vendor_name/branding/menus/branding-menu/branding-menu.json > /dev/null 2>&1; then
+    echo -e "${green}Setting up vendor customization menus\n${reset}"
 fi
 
-sed -i "s/vendor\/branding/vendor\/$vendor_name/g" vendor/$vendor_name/branding.mk
+if sed -i "s/\(\<vendor\/branding\>\)/\1/$vendor_name/g" vendor/$vendor_name/bootanimation/Android.mk > /dev/null 2>&1; then
+    echo -e "${green}Setting vendor name for bootanimations\n${reset}"
+fi
+
+if sed -i "s/\(\<vendor\/branding\>\)/\1/$vendor_name/g" vendor/$vendor_name/branding.mk > /dev/null 2>&1; then
+    echo -e "${green}Setting vendor name for branding scripts\n${reset}"
+else
+    echo -e "${yellow}No need to set vendor branding name.\n${reset}"
+fi
 
 echo "SCRIPT_PATH: $SCRIPT_PATH"
 export PATH="$SCRIPT_PATH/includes/core-menu/includes/:$PATH"

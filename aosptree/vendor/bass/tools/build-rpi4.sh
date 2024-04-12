@@ -544,7 +544,14 @@ if [ "$USE_FOSSAPPS" = true ]; then
 fi
 
 . build/envsetup.sh
-$CLEAN_COMMAND
+$CLEAN_COMMAND 
+# check output of clean command to make sure it completes successfully
+if [ $? -ne 0 ]; then  
+    echo -e "\e[31m!!WARNING!!\e[0m"
+    echo -e "\e[31mClean command failed. Please manually remove the out folder before continuing\e[0m"
+    echo -e "\e[31mExiting...\e[0m"
+    exit 1  
+fi
 
 # set up build variables
 export RELEASE_OS_TITLE=${RELEASE_OS_TITLE:-BlissBass};
