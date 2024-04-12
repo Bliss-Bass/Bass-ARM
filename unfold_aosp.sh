@@ -7,6 +7,7 @@ pushd aosptree
 repo init -u https://android.googlesource.com/platform/manifest -b refs/tags/android-platform-14.0.0_r7 ${GD_REPO_INIT_ARGS}
 cd .repo/manifests
 mv default.xml aosp.xml
+cp ${LOCAL_PATH}/manifests/bass.xml bass.xml
 cp ${LOCAL_PATH}/manifests/glodroid.xml glodroid.xml
 cp ${LOCAL_PATH}/manifests/default_aosp.xml default.xml
 git add *

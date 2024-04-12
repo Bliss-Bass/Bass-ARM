@@ -1,7 +1,7 @@
 #!/bin/bash
 # -*- coding: utf-8; tab-width: 4; c-basic-offset: 4; indent-tabs-mode: nil -*-
 
-# Bliss-Bass RaspberryPi unfolding profile
+# Bass RaspberryPi unfolding profile
 #
 # SPDX-License-Identifier: BSD-3-Clause
 
@@ -34,11 +34,10 @@ echo -e "${ltblue}Init repo tree using AOSP manifest ${reset}"
 pushd aosptree
 repo init -u https://github.com/BlissRoms/platform_manifest.git -b typhoon --git-lfs
 cd .repo/manifests
-rm default.xml
-cp ${LOCAL_PATH}/manifests/bliss-static.xml bliss.xml
-cp ${LOCAL_PATH}/manifests/tesla-android.xml tesla-android.xml
+mv default.xml aosp.xml
+cp ${LOCAL_PATH}/manifests/bass.xml bass.xml
 cp ${LOCAL_PATH}/manifests/glodroid.xml glodroid.xml
-cp ${LOCAL_PATH}/manifests/default_bliss.xml default.xml
+cp ${LOCAL_PATH}/manifests/default_aosp.xml default.xml
 git add *
 git commit --no-edit -m "Add GloDroid Project"
 popd

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote name="bb" fetch="ssh://git@github.com/Bliss-Bass/" />
+  <remote name="sghub" fetch="ssh://git@github.com/" />
+
+  <project path="packages/apps/Seedvault" name="LineageOS/android_packages_apps_Seedvault" remote="ghub" revision="lineage-20.0" />
+
+  <remove-project name="platform_vendor_bliss" />
+  <project path="vendor/bliss" name="platform_vendor_bliss" remote="bb" revision="bass-13.0" />
+  <remove-project name="platform_vendor_overlays" />
+  <project path="vendor/overlays" name="platform_vendor_overlays" remote="bb" revision="bass-13.0" />
+  
+</manifest>
