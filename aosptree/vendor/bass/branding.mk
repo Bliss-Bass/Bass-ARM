@@ -2,6 +2,15 @@
 $(call inherit-product, vendor/agp-apps/agp-apps.mk)
 $(call inherit-product, vendor/foss/foss.mk)
 
+PRODUCT_SOONG_NAMESPACES += vendor/bass
+PRODUCT_BROKEN_VERIFY_USES_LIBRARIES := true
+
+# Build broken rules
+BUILD_BROKEN_DUP_RULES := true
+BUILD_BROKEN_USES_BUILD_HOST_EXECUTABLE := true
+BUILD_BROKEN_USES_BUILD_HOST_STATIC_LIBRARY := true
+BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
+
 # Disable vendor restrictions
 PRODUCT_RESTRICT_VENDOR_FILES := false
 
