@@ -2,12 +2,34 @@
 <manifest>
   <remote name="bb" fetch="ssh://git@github.com/Bliss-Bass/" />
   <remote name="sghub" fetch="ssh://git@github.com/" />
+  <remote name="bb-gl" fetch="ssh://git@gitlab.com/Bliss-Bass/" />
+  <remote name="sglab" fetch="ssh://git@gitlab.com/" />
+  <remote name="hglab" fetch="https://gitlab.com/" />
 
-  <project path="packages/apps/Seedvault" name="LineageOS/android_packages_apps_Seedvault" remote="ghub" revision="lineage-20.0" />
+  <!-- Public Projects -->
+  <!-- <remove-project name="platform_packages_apps_SetupWizard" /> -->
+  <!-- <project path="packages/apps/SetupWizard" name="platform_packages_apps_SetupWizard" remote="bb" revision="bass-12.1" /> -->
+  <!-- <project path="packages/apps/Seedvault" name="LineageOS/android_packages_apps_Seedvault" remote="ghub" revision="lineage-19.1" /> -->
+  <!-- <remove-project name="platform/packages/apps/Gallery2" /> -->
+  <!-- <project path="packages/apps/Gallery2" name="platform_packages_apps_Gallery2" remote="bb" revision="bass-12.1" /> -->
+  
 
-  <remove-project name="platform_vendor_bliss" />
-  <project path="vendor/bliss" name="platform_vendor_bliss" remote="bb" revision="bass-13.0" />
-  <remove-project name="platform_vendor_overlays" />
-  <project path="vendor/overlays" name="platform_vendor_overlays" remote="bb" revision="bass-13.0" />
+  <!-- Co-Labs Projects -->
+  <!-- <project path="packages/apps/BlissPowerManager" name="platform_packages_apps_BlissPowerManager" remote="bb" revision="arcadia-x86" /> -->
+  <!-- <project path="external/blissethernet" name="platform_external_blissethernet" remote="bb" revision="arcadia-x86" /> -->
+
+  <!-- Android-Generic -->
+  <!-- <remove-project name="vendor_foss" /> -->
+  <project name="android-generic/vendor_foss" path="vendor/foss" remote="sghub" revision="hmchoice" upstream="hmchoice" dest-branch="hmchoice"/>
+  <project name="android-generic/vendor_prebuilts_agp-apps" path="vendor/agp-apps" remote="sglab" revision="master" />
+
+  <!-- LineageOS -->
+  <!-- <remove-project name="android_frameworks_opt_colorpicker" />
+  <project path="frameworks/opt/colorpicker" name="LineageOS/android_frameworks_opt_colorpicker" remote="ghub" revision="lineage-19.1"/>
+  <remove-project name="android_packages_apps_Etar" />
+  <project path="packages/apps/Etar" name="LineageOS/android_packages_apps_Etar" sync-s="true" remote="sghub" revision="lineage-19.1" /> -->
+
+  <!-- CalyxOS -->
+  <project path="prebuilts/calyx/microg" name="CalyxOS/platform_prebuilts_calyx_microg" sync-s="true" remote="hglab" revision="android14" />
   
 </manifest>
