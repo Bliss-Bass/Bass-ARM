@@ -1,4 +1,13 @@
 -include vendor/bass/apps.mk
+$(call inherit-product, vendor/agp-apps/agp-apps.mk)
+$(call inherit-product, vendor/foss/foss.mk)
+
+# Disable vendor restrictions
+PRODUCT_RESTRICT_VENDOR_FILES := false
+
+# SystemUI
+PRODUCT_DEXPREOPT_SPEED_APPS += \
+    SystemUI
 
 # Common Overlays
 DEVICE_PACKAGE_OVERLAYS += vendor/bass/overlay/common
