@@ -280,7 +280,7 @@ function update_apps()
         if [ "$USE_FOSSAPPS" = "true" ]; then
             echo -e "Updating FOSS apps now..."
             echo ""
-            $(cd vendor/foss && bash update.sh 1)
+            $(cd vendor/foss && bash update.sh)
             echo -e "FOSS apps updated"
         fi
 
