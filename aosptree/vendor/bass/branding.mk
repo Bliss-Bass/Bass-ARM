@@ -139,6 +139,15 @@ PRODUCT_PACKAGES += \
 
 endif
 
+# SmartDock
+ifeq ($(USE_SMARTDOCK), true)
+
+PRODUCT_PACKAGES += \
+    SmartDock \
+    smart-dock
+
+endif
+
 # Bliss Restricted Launcher
 ifeq ($(USE_BLISS_RESTRICTED_LAUNCHER), true)
 
