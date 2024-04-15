@@ -7,6 +7,11 @@
   <remote name="hglab" fetch="https://gitlab.com/" />
 
   <!-- Public Projects -->
+  <remove-project name="glodroid_external_apks.git" />
+  <project path="glodroid/apks" name="glodroid_external_apks" remote="bb" revision="master" />
+  <remove-project name="glodroid_configuration.git" />
+  <project path="glodroid" remote="sghub" name="GloDroid/glodroid_configuration" revision="refs/tags/basedir-v0.9.0" />
+  <project path="glodroid/configuration" name="glodroid_configuration" remote="bb" revision="v0.9.0-rc3" />
   <!-- <remove-project name="platform_packages_apps_SetupWizard" /> -->
   <!-- <project path="packages/apps/SetupWizard" name="platform_packages_apps_SetupWizard" remote="bb" revision="bass-12.1" /> -->
   <!-- <project path="packages/apps/Seedvault" name="LineageOS/android_packages_apps_Seedvault" remote="ghub" revision="lineage-19.1" /> -->
