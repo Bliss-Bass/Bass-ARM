@@ -112,7 +112,7 @@ function displayHelp() {
     # echo "--rightmouseasback     Enable right mouse button as back"
     echo ""
     echo "Package Options:"
-    # echo "--noksu                Disable KernelSU"
+    echo "--noksu                Disable KernelSU"
     echo "-f, --fossapps         Enable fossapps"
     echo "--minfossapps          Enable minimal fossapps"
     echo "--minfossmicrog        Enable minimal fossapps with microg"

@@ -503,13 +503,15 @@ function copy_configs()
         echo "ax86 startmenu added to workspace"
     fi
 
-    # if [ "$BLISS_REMOVE_KSU" = "true" ]; then
-    #     echo "Removing KSU config from kernel"
-    #     sed -i 's/CONFIG_KSU=y/\# CONFIG_KSU is not set/' kernel/arch/x86/configs/android-x86_64_defconfig
-    # else
-    #     echo "Adding KSU config to kernel"
-    #     sed -i 's/\# CONFIG_KSU is not set/CONFIG_KSU=y/' kernel/arch/x86/configs/android-x86_64_defconfig
-    # fi
+    if [ "$BLISS_REMOVE_KSU" = "true" ]; then
+        echo "Removing KSU config from kernel"
+        sed -i 's/CONFIG_KSU=y/\# CONFIG_KSU is not set/' glodroid/kernel/broadcom/arch/arm64/configs/bcm2711_defconfig
+        sed -i 's/CONFIG_KSU=y/\# CONFIG_KSU is not set/' glodroid/kernel/broadcom/arch/arm64/configs/lineageos_rpi4_defconfig
+    else
+        echo "Adding KSU config to kernel"
+        sed -i 's/\# CONFIG_KSU is not set/CONFIG_KSU=y/' glodroid/kernel/broadcom/arch/arm64/configs/bcm2711_defconfig
+        sed -i 's/\# CONFIG_KSU is not set/CONFIG_KSU=y/' glodroid/kernel/broadcom/arch/arm64/configs/lineageos_rpi4_defconfig
+    fi
 
     if [ "$BLISS_DISABLE_LARGE_SCREEN_SETTINGS" = "true" ]; then
         echo "Disabling large screen settings"

@@ -146,6 +146,9 @@ PRODUCT_PACKAGES += \
     SmartDock \
     smart-dock
 
+    PRODUCT_PROPERTY_OVERRIDES += \
+        persist.glodroid.set_smartdock_default=true
+
 endif
 
 # Bliss Restricted Launcher
