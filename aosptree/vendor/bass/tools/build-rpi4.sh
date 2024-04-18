@@ -80,7 +80,7 @@ function displayHelp() {
     echo "-c, --clean            Clean the project"
     echo "--nocleanconf          Do not clean the project configs that are changed in source"
     echo "-d, --dirty            Run in dirty mode"
-    # echo "-t, --title (title)    Set the release title"
+    echo "-t, --title (title)    Set the release title"
     # echo "-b, --blissbuildvariant (variant)   Set the Bliss build variant"
     echo "-i, --isgo             Enable isgo version"
     echo "-v, --specialvariant (variant)      Set the special variant"
@@ -190,18 +190,31 @@ doImageCopy() {
     mkdir -p images
     img_exists=$(find out/target/product/gd_rpi4/ -name "sdcard.img")
     tar_exists=$(find out/target/product/gd_rpi4/ -name "images.tar.gz")
+    flash_exists=$(find out/target/product/gd_rpi4/ -name "flash-sd.sh")
+    fastboot_exists=$(find out/target/product/gd_rpi4/ -name "fastboot")
     build_date=$(date +%Y%m%d%H%M%S)
+    build_pre="${RELEASE_OS_TITLE:-bass}"
+    build_post="${BLISS_SPECIAL_VARIANT}"
+    build_filename="${build_pre}${build_post}_gd_rpi4_${build_date}"
     if [[  "$img_exists" != "" ]]; then 
-        build_filename="bliss_gd_rpi4_${build_date}"
         mkdir -p images/$build_filename
         img_name=$(basename "$img_exists")
         cp "$img_exists" images/$build_filename/"$img_name"
     fi
     if [[  "$tar_exists" != "" ]]; then 
-        build_filename="bliss_gd_rpi4_${build_date}"
         mkdir -p images/$build_filename
         tar_name=$(basename "$tar_exists")
         cp "$tar_exists" images/$build_filename/"$tar_name"
+    fi
+    if [[  "$flash_exists" != "" ]]; then 
+        mkdir -p images/$build_filename
+        flash_name=$(basename "$flash_exists")
+        cp "$flash_exists" images/$build_filename/"$flash_name"
+    fi
+    if [[  "$fastboot_exists" != "" ]]; then 
+        mkdir -p images/$build_filename
+        fastboot_name=$(basename "$fastboot_exists")
+        cp "$fastboot_exists" images/$build_filename/"$fastboot_name"
     fi
 }
 
@@ -739,3 +752,20 @@ fi
 
 echo -e "build files can be found: images/${build_filename}/"
 echo -e "revisional manifest can be found: images/${build_filename}/manifest/${build_filename}-manifest.xml"
+
+# count the number of folders in images/
+images_count=$(find images/ -mindepth 1 -maxdepth 1 -type d | wc -l)
+echo "Number of builds in images/: $images_count"
+if [ "$images_count" -gt 5 ]; then
+    echo "There are many builds in images/: $images_count"
+    # ask if the user wants to remove builds older than the last 5 builds
+    read -t 30 -p "Do you want to remove builds older than the last 5 builds? (y/n) " -n 1 -r
+    if [[ -z "$REPLY" ]]; then
+        REPLY="n"
+    fi
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        echo "Removing builds older than the last 5 builds..."
+        rm -rf $(find images/ -mindepth 1 -maxdepth 1 -type d -printf '%T+ %p\n' | sort | head -n -5 | awk '{print $2}')
+    fi
+fi
