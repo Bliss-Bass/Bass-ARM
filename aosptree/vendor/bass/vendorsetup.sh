@@ -474,6 +474,17 @@ function copy_configs()
 
     fi
 
+    if [ "$BLISS_CLEAR_DW_HOTSEAT" = "true" ]; then
+        # Look for all filenames with "dw_hotseat*.xml" in packages/apps/Launcher3/res/xml/ and add them to DWWORKSPACE_LIST
+        DWWORKSPACE_LIST=$(find packages/apps/Launcher3/res/xml/ -type f -name "dw_hotseat*.xml")
+        # loop through the files in WORKSPACE_LIST and remove all lines between <favorites xmlns:launcher="http://schemas.android.com/apk/res-auto/com.android.launcher3"> and </favorites>
+        for dwfile in $DWWORKSPACE_LIST
+        do
+            sed -i '/<resolve/,/<\/resolve>/d' $dwfile
+        done
+
+    fi
+
     if [ "$BLISS_LAUNCHER3_TASKBAR_NAVIGATION" = "true" ]; then
         sed -i 's/"ENABLE_TASKBAR", false,/"ENABLE_TASKBAR", true,/' packages/apps/Launcher3/src/com/android/launcher3/config/FeatureFlags.java
         # sed -i 's/android:key="enable_taskbar" android:defaultValue="false"/android:key="enable_taskbar" android:defaultValue="true"/' packages/apps/Blissify/res/xml/blissify_button.xml || sed -i 's/android:key="enable_taskbar"/android:key="enable_taskbar" android:defaultValue="true"/' packages/apps/Blissify/res/xml/blissify_button.xml
