@@ -199,7 +199,8 @@ doImageCopy() {
     if [[  "$img_exists" != "" ]]; then 
         mkdir -p images/$build_filename
         img_name=$(basename "$img_exists")
-        cp "$img_exists" images/$build_filename/"$img_name"
+        xz -d "$img_exists"
+        cp "$img_exists.xz" images/$build_filename/"$img_name".xz
     fi
     if [[  "$tar_exists" != "" ]]; then 
         mkdir -p images/$build_filename
