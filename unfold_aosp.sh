@@ -15,7 +15,7 @@ popd
 
 echo Sync repo tree
 pushd aosptree
-repo sync -c
+repo sync -c --force-sync -j4 || exit 1
 popd
 
 echo Patch AOSP tree
