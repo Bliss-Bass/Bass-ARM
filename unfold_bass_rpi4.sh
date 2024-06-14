@@ -33,7 +33,7 @@ top_dir=`readlink -f "$LOCAL_PATH/aosptree"`
 echo -e "${ltblue}Init repo tree using AOSP manifest ${reset}"
 pushd aosptree
 # repo init -u git@github.com:BlissBass-Private/bass-os.git -b bass-rpi-13.0 --git-lfs
-repo init -u https://android.googlesource.com/platform/manifest -b refs/tags/android-13.0.0_r35
+repo init -u https://android.googlesource.com/platform/manifest -b refs/tags/android-platform-14.0.0_r7 ${GD_REPO_INIT_ARGS}
 cd .repo/manifests
 mv default.xml aosp.xml
 cp ${LOCAL_PATH}/manifests/bass.xml bass.xml
