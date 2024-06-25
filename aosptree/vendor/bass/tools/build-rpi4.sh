@@ -191,6 +191,7 @@ doImageCopy() {
     #using the filename of the .iso for the directory name and the .iso file name.
     mkdir -p images
     img_exists=$(find out/target/product/gd_rpi4/ -name "sdcard.img")
+    zip_exists=$(find out/target/product/gd_rpi4/ -name "sdcard.img.zip")
     tar_exists=$(find out/target/product/gd_rpi4/ -name "images.tar.gz")
     flash_exists=$(find out/target/product/gd_rpi4/ -name "flash-sd.sh")
     fastboot_exists=$(find out/target/product/gd_rpi4/ -name "fastboot")
@@ -203,6 +204,11 @@ doImageCopy() {
         img_name=$(basename "$img_exists")
         xz -d "$img_exists"
         cp "$img_exists.xz" images/$build_filename/"$img_name".xz
+    fi
+    if [[  "$zip_exists" != "" ]]; then 
+        mkdir -p images/$build_filename
+        zip_name=$(basename "$zip_exists")
+        cp "$zip_exists" images/$build_filename/"$zip_name"
     fi
     if [[  "$tar_exists" != "" ]]; then 
         mkdir -p images/$build_filename
@@ -244,7 +250,7 @@ while [[ $# -gt 0 ]]; do
             ;;
         -c|--clean)
             echo "Cleaning..."
-            CLEAN_COMMAND="make clean && "
+            CLEAN_COMMAND="make clean "
             shift
             ;;
         -d|--dirty)
@@ -725,8 +731,7 @@ echo "UseSystemUIBlureffects: ${BLISS_USE_SYSTEMUI_BLUR}";
 jcores=$(nproc --all --ignore=4);
 # lunch bliss_x86_64-userdebug && make ${BUILD_EXTRA_PACKAGES} blissify iso_img -j$jcores;
 lunch gd_rpi4-userdebug
-make images -k || make images -j1
-make sdcard
+make images sdcardzip -k || make images sdcardzip -j1
 
 doImageCopy
 
