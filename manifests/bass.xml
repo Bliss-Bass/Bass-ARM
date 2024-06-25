@@ -18,6 +18,14 @@
   <!-- <remove-project name="platform/packages/apps/Gallery2" /> -->
   <!-- <project path="packages/apps/Gallery2" name="platform_packages_apps_Gallery2" remote="bb" revision="bass-12.1" /> -->
   
+  <!-- Glodroid Forks (platform) -->
+
+  <remove-project name="glodroid_forks.git" />
+  <project path="glodroid/kernel/broadcom" sync-s="true" remote="bb" name="glodroid_kernel_broadcom" groups="glodroid" revision="kernel-broadcom-2024w20-ksu" />
+  <project path="glodroid/vendor/libcamera/subprojects/libyuv"  remote="glodroid"  name="glodroid_forks.git" groups="glodroid" revision="refs/tags/libyuv-v0.8.2" />
+  <project path="glodroid/vendor/ffmpeg_codec2"   remote="glodroid"    name="glodroid_forks.git" groups="glodroid" revision="refs/tags/ffmpeg_codec2-2023w46" clone-depth="1" />
+  <project path="glodroid/vendor/iio-sensors-hal" remote="glodroid" name="glodroid_forks.git" groups="glodroid" revision="refs/tags/iio-sensors-hal-v0.9.0" />
+  <project path="glodroid/vendor/libudev-zero"    remote="glodroid" name="glodroid_forks.git" groups="glodroid" revision="refs/tags/libudev_zero-v0.8.2" />
 
   <!-- Co-Labs Projects -->
   <!-- <project path="packages/apps/BlissPowerManager" name="platform_packages_apps_BlissPowerManager" remote="bb" revision="arcadia-x86" /> -->
