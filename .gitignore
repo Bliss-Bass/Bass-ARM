@@ -4,5 +4,4 @@ aosptree/**
 !aosptree/vendor/devices-community/**
 !aosptree/vendor/bass
 !aosptree/vendor/bass/**
-images/
 images/**
