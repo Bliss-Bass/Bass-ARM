@@ -11,7 +11,7 @@
   <project path="glodroid/apks" name="glodroid_external_apks" remote="bb" revision="master" />
   <remove-project name="glodroid_configuration.git" />
   <project path="glodroid" remote="sghub" name="GloDroid/glodroid_configuration" revision="refs/tags/basedir-v0.9.0" />
-  <project path="glodroid/configuration" name="glodroid_configuration" remote="bb" revision="98a6c10810ae44c594f7fd7bd2c99524560b5a26" />
+  <project path="glodroid/configuration" name="glodroid_configuration" remote="bb" revision="fd8ce7d2869a9f544a5732a5d49bf9b1028fb824" />
   <!-- <remove-project name="platform_packages_apps_SetupWizard" /> -->
   <!-- <project path="packages/apps/SetupWizard" name="platform_packages_apps_SetupWizard" remote="bb" revision="bass-12.1" /> -->
   <!-- <project path="packages/apps/Seedvault" name="LineageOS/android_packages_apps_Seedvault" remote="ghub" revision="lineage-19.1" /> -->
@@ -21,7 +21,7 @@
   <!-- Glodroid Forks (platform) -->
 
   <remove-project name="glodroid_forks.git" />
-  <project path="glodroid/kernel/broadcom" sync-s="true" remote="bb" name="glodroid_kernel_broadcom" groups="glodroid" revision="kernel-broadcom-2024w20-ksu" />
+  <project path="glodroid/kernel/broadcom" sync-s="true" remote="bb" name="glodroid_kernel_broadcom" groups="glodroid" revision="kernel-broadcom-2024w30-kernelsu" />
   <project path="glodroid/vendor/libcamera/subprojects/libyuv"  remote="glodroid"  name="glodroid_forks.git" groups="glodroid" revision="refs/tags/libyuv-v0.8.2" />
   <project path="glodroid/vendor/ffmpeg_codec2"   remote="glodroid"    name="glodroid_forks.git" groups="glodroid" revision="refs/tags/ffmpeg_codec2-2023w46" clone-depth="1" />
   <project path="glodroid/vendor/iio-sensors-hal" remote="glodroid" name="glodroid_forks.git" groups="glodroid" revision="refs/tags/iio-sensors-hal-v0.9.0" />
