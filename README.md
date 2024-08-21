@@ -75,7 +75,7 @@ chmod a+x ~/bin/repo
 ### Fetching the sources and building the project
 
 ```bash
-git clone https://github.com/GloDroidCommunity/raspberry-pi.git
+git clone https://github.com/Bliss-Bass/bass-pi.git
 cd raspberry-pi
 ```
 
@@ -94,6 +94,14 @@ To enable GMS (microg), set the environment variable `export WITH_GMS=true`.
 
 ```bash
 ./unfold_lineageos.sh && ./build.sh
+```
+
+### Building Bass-Pi
+
+To see all build options, use: `bash build_bass_rpi4.sh -h`.
+
+```bash
+./unfold_bass_rpi4.sh && ./build_bass_rpi4.sh -h
 ```
 
 ### Notes
