@@ -1,7 +1,7 @@
-From a9b939efad2964d4cb88d90c6c3f59d8dcbed612 Mon Sep 17 00:00:00 2001
+From 600df6394d151ef97f95a59ff422fadc97e73f51 Mon Sep 17 00:00:00 2001
 From: Roman Stratiienko <r.stratiienko@gmail.com>
 Date: Tue, 5 Dec 2023 20:13:04 +0200
-Subject: [PATCH 2/2] Revert "Revert "Turn on vk unit tests""
+Subject: [PATCH 2/3] Revert "Revert "Turn on vk unit tests""
 
 This reverts commit d290c36e6e30a2be150605cf8437d36e095e1ab7.
 
@@ -333,5 +333,5 @@ index 81ecfe59d3bc..9d5c13e5cd75 100644
  
  /**
 -- 
-2.39.2
+2.34.1
 
