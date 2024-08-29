@@ -75,8 +75,8 @@ chmod a+x ~/bin/repo
 ### Fetching the sources and building the project
 
 ```bash
-git clone https://github.com/Bliss-Bass/bass-pi.git
-cd raspberry-pi
+git clone https://github.com/Bliss-Bass/Bass-ARM.git bass-arm
+cd bass-arm
 ```
 
 ### Building AOSP
@@ -103,6 +103,18 @@ To see all build options, use: `bash build_bass_rpi4.sh -h`.
 ```bash
 ./unfold_bass_rpi4.sh && ./build_bass_rpi4.sh -h
 ```
+
+#### Examples
+
+##### BassPi-Desktop
+
+Bass builds are all configured from the single cmdline interface. So our standard Desktop offering is compiled with the following command:
+
+```bash
+bash build_bass_pri4.sh --clean --title "BassPi" --blissbuildvariant foss --specialvariant "-Desktop-v14" --ethernetmanager --tabletnav --nolarge --supervanilla --minimal --smartdock --clearhotseat --cleardwhotseat --minfossapps --usecalyxmicrog --aurorastore
+```
+
+After a build, the argument history can be found in the build_arg_history file linked in the main project folder.
 
 ### Notes
 
