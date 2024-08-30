@@ -239,7 +239,7 @@ else
         touch .bbconfig/build_arg_history
     fi
     shelldate=$( date +%Y-%m-%d_%H:%M:%S )
-    printf "Date: %s: bash build_bass_pri4.sh %s\n" "$shelldate" "$*" >> .bbconfig/build_arg_history
+    printf "Date: %s: bash build_bass_rpi4.sh %s\n" "$shelldate" "$*" >> .bbconfig/build_arg_history
 fi
 
 # Parse arguments
