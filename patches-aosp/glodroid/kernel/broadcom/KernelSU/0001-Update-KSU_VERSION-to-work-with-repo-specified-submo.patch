@@ -1,0 +1,34 @@
+From c9b0d9906146795171305ede188358981a74432b Mon Sep 17 00:00:00 2001
+From: Jon West <electrikjesus@gmail.com>
+Date: Fri, 30 Aug 2024 13:11:25 -0400
+Subject: [PATCH] Update KSU_VERSION to work with repo specified submodules
+
+---
+ kernel/Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/kernel/Makefile b/kernel/Makefile
+index 9fec3ef3..c4d76b2b 100644
+--- a/kernel/Makefile
++++ b/kernel/Makefile
+@@ -17,7 +17,7 @@ ccflags-y += -I$(objtree)/security/selinux -include $(srctree)/include/uapi/asm-
+ obj-$(CONFIG_KSU) += kernelsu.o
+ 
+ # .git is a text file while the module is imported by 'git submodule add'.
+-ifeq ($(shell test -e $(srctree)/$(src)/../.git; echo $$?),0)
++ifeq ($(shell test -e $(srctree)/$(src)/../.git; echo $$? || readlink $(srctree)/$(src)/../.git; echo $? ),0)
+ $(shell cd $(srctree)/$(src); /usr/bin/env PATH="$$PATH":/usr/bin:/usr/local/bin [ -f ../.git/shallow ] && git fetch --unshallow)
+ KSU_GIT_VERSION := $(shell cd $(srctree)/$(src); /usr/bin/env PATH="$$PATH":/usr/bin:/usr/local/bin git rev-list --count HEAD)
+ # ksu_version: major * 10000 + git version + 200 for historical reasons
+@@ -26,7 +26,7 @@ $(info -- KernelSU version: $(KSU_VERSION))
+ ccflags-y += -DKSU_VERSION=$(KSU_VERSION)
+ else # If there is no .git file, the default version will be passed.
+ $(warning "KSU_GIT_VERSION not defined! It is better to make KernelSU a git submodule!")
+-ccflags-y += -DKSU_VERSION=16
++ccflags-y += -DKSU_VERSION=11928
+ endif
+ 
+ ifndef KSU_EXPECTED_SIZE
+-- 
+2.34.1
+
