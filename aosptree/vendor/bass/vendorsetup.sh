@@ -559,6 +559,20 @@ function copy_configs()
         sed -i 's#config_letterboxBackgroundType">0#config_letterboxBackgroundType">3#g' frameworks/base/core/res/res/values/config.xml
         sed -i 's#config_letterboxBackgroundType">0#config_letterboxBackgroundType">3#g' frameworks/base/core/res/res/values/config.xml
     fi
+
+    if [ "$SET_DARKMODE" = "true" ]; then
+        echo -e "Use Dark Theme as default. Updating configs now..."
+        echo ""
+        sed -i 's/config_defaultNightMode">1/config_defaultNightMode">2/g' frameworks/base/core/res/res/values/config.xml
+        
+        echo -e "Configs updated"
+    else
+        echo -e "Use Light Theme as default. Updating configs now..."
+        echo ""
+        sed -i 's/config_defaultNightMode">2/config_defaultNightMode">1/g' frameworks/base/core/res/res/values/config.xml
+        
+        echo -e "Configs updated"
+    fi
 }
 
 function add_grub_cmdline_options()
