@@ -1,5 +1,6 @@
 -include vendor/bass/apps.mk
 include vendor/bass/configs/watermark.mk
+include vendor/bass/configs/signing.mk
 $(call inherit-product, vendor/agp-apps/agp-apps.mk)
 $(call inherit-product, vendor/foss/foss.mk)
 
