@@ -34,7 +34,7 @@
   <!-- Android-Generic -->
   <!-- <remove-project name="vendor_foss" /> -->
   <project name="android-generic/vendor_foss" path="vendor/foss" remote="sghub" revision="hmchoice" upstream="hmchoice" dest-branch="hmchoice"/>
-  <project name="android-generic/vendor_prebuilts_agp-apps" path="vendor/agp-apps" remote="hglab" revision="master" />
+  <project name="public_vendor_prebuilts_agp-apps" path="vendor/agp-apps" remote="bbgl" revision="bass-14.0" />
 
   <!-- LineageOS -->
   <!-- <remove-project name="android_frameworks_opt_colorpicker" />
