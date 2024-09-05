@@ -218,6 +218,12 @@ PRODUCT_PACKAGES += \
 
 endif
 
+ifeq ($(FORCE_WIN_AS_HOME),true)
+    PRODUCT_PROPERTY_OVERRIDES += \
+        ro.boot.force.win_as_home=1
+
+endif
+
 # Copy any Permissions files, overriding anything if needed
 $(foreach f,$(wildcard $(LOCAL_PATH)/permissions/*.xml),\
     $(eval PRODUCT_COPY_FILES += $(f):$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/$(notdir $f)))
