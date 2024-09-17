@@ -153,6 +153,30 @@ PRODUCT_PACKAGES += \
 
 endif
 
+# Vapor Launcher
+ifeq ($(USE_VAPOR_LAUNCHER), true)
+
+PRODUCT_PACKAGES += \
+    Vapor \
+    org.vapor.android-priv-app-permissions.xml
+
+    PRODUCT_PROPERTY_OVERRIDES += \
+        persist.glodroid.set_vapor_default=true
+
+endif
+
+# Cross Launcher
+ifeq ($(USE_BLISS_CROSS_LAUNCHER), true)
+
+PRODUCT_PACKAGES += \
+    CrossLauncher \
+    id.psw.vshlauncher-permissions.xml
+
+    PRODUCT_PROPERTY_OVERRIDES += \
+        persist.glodroid.set_cross_default=true
+
+endif
+
 # Bliss Restricted Launcher
 ifeq ($(USE_BLISS_RESTRICTED_LAUNCHER), true)
 
