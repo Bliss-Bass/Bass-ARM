@@ -107,6 +107,16 @@ bash unfold_bass_rpi4.sh
 
 ### Building Bass-Pi
 
+This is where things get a little interesting. Bass Toolkit is integrated as part of Bass ARM, and through that we have access to a variety of build options. So the difference between a Desktop UI based build and a Gaming UI based build is defined by changing a few of the options in the build command. 
+
+Desktop Builds default configs:
+
+- --smartdock : the default Desktop mode taskbar and start menu
+- --tabletnav : forces navigation mode to use 3-button navigation
+- --nolarge : forces Settings and other apps to not use split screen layouts
+- --clearhotseat : removes the favorite apps from the Android launcher
+- --cleardwhotseat : removes the favorite apps from the Android taskbar
+
 To see all build options along with their descriptions, use: `bash build_bass_rpi4.sh -h`.
 
 ```bash
