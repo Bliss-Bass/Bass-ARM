@@ -7,7 +7,7 @@
 
 ## Bass OS Resources: 
 
-[![Bass OS/ARM Website](https://img.shields.io/badge/BASS-OS-WEBSITE-green)](https://bliss-bass.github.io)
+[![Bass OS/ARM Website](https://img.shields.io/badge/BASS-OS-green)](https://bliss-bass.github.io)
 [![Bass OS/ARM Documentation](https://img.shields.io/badge/DOCUMENTATION-orange)](https://docs.blisscolabs.dev)
 
 ## Warning!
@@ -97,12 +97,20 @@ git clone https://github.com/Bliss-Bass/Bass-ARM.git bass-arm
 cd bass-arm
 ```
 
-### Building Bass-Pi
+### Unfolding the source
 
-To see all build options, use: `bash build_bass_rpi4.sh -h`.
+This part takes a while and is the part that uses up all your internet bandwidth. Please do this on unmetered connections
 
 ```bash
-./unfold_bass_rpi4.sh && ./build_bass_rpi4.sh -h
+bash unfold_bass_rpi4.sh
+```
+
+### Building Bass-Pi
+
+To see all build options along with their descriptions, use: `bash build_bass_rpi4.sh -h`.
+
+```bash
+bash build_bass_rpi4.sh -h
 ```
 
 #### Examples
