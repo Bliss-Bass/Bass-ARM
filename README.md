@@ -1,9 +1,14 @@
-# Android 14 for the Raspberry PI 4 series based on the GloDroid project
+# Bass Pi - Android 14 for the Raspberry PI 4 series based on the GloDroid project and Bass OS
 
 [![GloDroid](https://img.shields.io/badge/GLODROID-PROJECT-blue)](https://github.com/GloDroid/glodroid_manifest)
 [![ProjectStatus](https://img.shields.io/badge/PROJECT-STATUS-yellowgreen)](https://github.com/GloDroidCommunity/raspberry-pi/issues/1)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Discord](https://img.shields.io/discord/753603904406683670.svg?label=Discord&logo=discord&colorB=7289DA&style=flat-square)](https://discord.gg/5H8cW5xA)
+
+## Bass OS Resources: 
+
+[![Bass OS/ARM Website](https://img.shields.io/badge/BASS-OS-WEBSITE-green)](https://bliss-bass.github.io)
+[![Bass OS/ARM Documentation](https://img.shields.io/badge/DOCUMENTATION-orange)](https://docs.blisscolabs.dev)
 
 ## Warning!
 
@@ -12,27 +17,9 @@ The user is fully responsible for any issues arising from using the project.
 
 ## Flashing images
 
-Find the sdcard image or archive with fastboot images [here](https://github.com/GloDroidCommunity/raspberry-pi/releases)
+Step 1) Find the sdcard image or archive with fastboot images [here](https://github.com/Bliss-Bass/bass-rpi/releases)
 
-Use the SDCard raw image to flash the Android into SDCard.
-
-Or use the fastboot images archive to download Android on SDCard using fastboot mode:  
-
-### Step 1
-Extract the content of the archive.  
-Using any available iso-to-usb utility, prepare recovery SDCARD.  
-To flash Android on a sdcard, use *deploy-sd.img*  
-  
-### Step 2
-Ensure you have installed the adb package: ```$ sudo apt install adb``` (required to set up udev rules)  
-Insert recovery sdcard into the phone.  
-Connect the phone and your PC using a typec cable.  
-Power up the phone. Blue LED indicates that the phone is in bootloader mode, and you can proceed with flashing.  
-  
-### Step 3
-Run .*/flash-sd.sh* utility for flashing Android to sdcard  
-  
-*After several minutes flashing should complete, and Android should boot*  
+Step 2) Follow the instructions from [Bass OS Documentation - Raspberry Pi Installation](https://docs.blisscolabs.dev/installation/raspberry-pi/raspberry-pi-installation/)
 
 ## Building from sources
 
@@ -94,6 +81,13 @@ wget -P ~/bin http://commondatastorage.googleapis.com/git-repo-downloads/repo
 chmod a+x ~/bin/repo
 ```
 
+For signing apps, we need to have the Android SDK's build-tools to be installed on the server at: ~/Android/Sdk
+https://dl.google.com/android/repository/build-tools_r34-linux.zip
+
+The easiest wy to do that is from Android-Studio: https://developer.android.com/studio#downloads
+
+This can be downloaded from: https://developer.android.com/studio/index.html#command-line-tools-only
+
 **NOTE: After this step, you may need to log out and log in to the system to make $HOME/bin added to the PATH environment variable.**
 
 ### Fetching the sources and building the project
@@ -101,23 +95,6 @@ chmod a+x ~/bin/repo
 ```bash
 git clone https://github.com/Bliss-Bass/Bass-ARM.git bass-arm
 cd bass-arm
-```
-
-### Building AOSP
-
-```bash
-./unfold_aosp.sh && ./build.sh
-```
-
-**NOTE: If you're using `git` for the first time, it may ask you to configure the user name and email address and confirm the colored terminal.
-Please follow the suggestion you see on the screen in this case.**
-
-### Building LineageOS
-
-To enable GMS (microg), set the environment variable `export WITH_GMS=true`.
-
-```bash
-./unfold_lineageos.sh && ./build.sh
 ```
 
 ### Building Bass-Pi
@@ -138,6 +115,16 @@ Bass builds are all configured from the single cmdline interface. So our standar
 bash build_bass_pri4.sh --clean --title "BassPi" --blissbuildvariant foss --specialvariant "-Desktop-v14" --ethernetmanager --tabletnav --nolarge --supervanilla --minimal --smartdock --clearhotseat --cleardwhotseat --minfossapps --usecalyxmicrog --aurorastore
 ```
 
+#### Initial Setups
+
+When running your first build, there are a number of options that trigger user input prompts. Some of those are:
+
+- Foss builds - Any foss app or foss variant build will initially ask you to download the latest versions of the FOSS app selections. This can be manually triggered for updates from aosptree/vendor/foss/update.sh
+- Production builds - This will prompt for signature certificate generation, so a lot of questions that you have to answer. This only needs to be done once and is saved in the source. Signatures are ignored from the manifest for security. We suggest you keep those separately (in a private repo if they need to be shared with team members).
+
+#### After the build
+
+Images from the build will be found in a folder with the build name and date, found in images/ , linked to the aosptree/images/ folder
 After a build, the argument history can be found in the build_arg_history file linked in the main project folder.
 
 ### Notes
